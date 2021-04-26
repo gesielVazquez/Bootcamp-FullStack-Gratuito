@@ -19,6 +19,10 @@ const App = () => {
     setBad(bad + 1)
   }
 
+  const allClicks = good + neutral + bad;
+  const averg = (good-bad)/allClicks;
+  const porc = (good/allClicks)*100;
+
   return (
     <div>
     <h1>Give FeedBack</h1>
@@ -32,6 +36,9 @@ const App = () => {
       <p>Good: {good}</p>
       <p>Neutral: {neutral}</p>
       <p>Bad: {bad}</p>
+      <p>All: {allClicks}</p>
+      <p>Average: {averg}</p>
+      <p>Positive: {porc}%</p>
     </p>
     </div>
   )
