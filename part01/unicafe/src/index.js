@@ -1,15 +1,24 @@
-import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
+import { useState } from "react";
+import ReactDOM from 'react-dom';
+
 
 const Statistics = ({good,neutral,bad}) => {
   const allClicks = good + neutral + bad;
   const averg = (good-bad)/allClicks;
   const porc = (good/allClicks)*100;
 
-  return (
-      <div>
+  return (allClicks === 0)
+  ? (
+    <div>
+       <h1>Statistics</h1>   
+       
+         <h1>No FeedBack!!</h1>
+       
+   </div>
+  )
+  : (
+    <div>
     <h1>Statistics</h1>
-    <p>
       <pre>
       <p>Good: {good}</p>
       <p>Neutral: {neutral}</p>
@@ -18,7 +27,7 @@ const Statistics = ({good,neutral,bad}) => {
       <p>Average: {averg}</p>
       <p>Positive: {porc}%</p>
       </pre>
-    </p>
+
      </div>
   )
 }
@@ -41,8 +50,6 @@ const App = () => {
     setBad(bad + 1)
   }
 
-
-
   return (
     <div>
     <h1>Give FeedBack</h1>
@@ -51,9 +58,7 @@ const App = () => {
       <button onClick = {handleClickNeutral}>Neutral</button>
       <button onClick = {handleClickBad}>Bad</button>
     </p>
-    <p>
-     <Statistics good={good} neutral={neutral} bad={bad} />
-    </p>
+      <Statistics good={good} neutral={neutral} bad={bad} />   
     </div>
   )
 }
